@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>馬躍成 & 楊雅婷 婚禮邀請｜2026.11.15</title>
   <meta name="description" content="2026.11.15（日）11:30｜VVG Food Play & Bar｜臺中國家歌劇院 5F" />
-  <meta name="theme-color" content="#f3eee6" />
+  <meta name="theme-color" content="#f6efe8" />
   <meta property="og:title" content="馬躍成 & 楊雅婷 婚禮邀請" />
   <meta property="og:description" content="2026.11.15（日）11:30｜VVG Food Play & Bar｜臺中國家歌劇院 5F" />
   <meta property="og:type" content="website" />
@@ -13,74 +13,80 @@
   <link rel="icon" href="./images/cover.jpg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+TC:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;500&display=swap" rel="stylesheet" />
   <style>
-    :root{--paper:#f4efe8;--ink:#3b3834;--ink-soft:#6b645c;--line:#c9bfb2;--white:#fffcf8;--shadow:0 14px 40px rgba(80,60,40,.1)}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{font-family:"Noto Sans TC",sans-serif;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
-    img{max-width:100%;display:block}
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:560px;margin:0 auto;background:var(--white);min-height:100vh;box-shadow:var(--shadow);padding-bottom:88px}
-    .sheet{padding:0 0 8px}
-    .sheet img{width:100%}
-    .tools{padding:16px 20px 8px}
+    :root{--ivory:#f7f1ea;--paper:#fbf7f2;--blush:#e8d3cc;--rose:#b07a73;--rose-deep:#8d5c56;--ink:#3f3834;--ink-soft:#7a716a;--line:#ddcfc6;--white:#fffcf8;--shadow:0 24px 60px rgba(90,54,46,.12)}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+    body{font-family:"Noto Sans TC",sans-serif;color:var(--ink);background:radial-gradient(1200px 700px at 50% -10%,#f3e4dc 0%,transparent 55%),linear-gradient(180deg,#efe4db 0%,var(--ivory) 40%,#eadfd6 100%);line-height:1.7;-webkit-font-smoothing:antialiased;touch-action:manipulation;-webkit-tap-highlight-color:rgba(176,122,115,.18)}
+    img{max-width:100%;height:auto;display:block}a{color:inherit}
+    .skip{position:absolute;left:12px;top:12px;transform:translateY(-160%);background:var(--white);color:var(--ink);padding:8px 12px;border-radius:999px;z-index:40}
+    .skip:focus{transform:none}
+    .wrap{max-width:430px;margin:0 auto;min-height:100vh;padding:18px 14px 110px}
+    .card{background:var(--paper);border:1px solid rgba(176,122,115,.18);box-shadow:var(--shadow);overflow:hidden;animation:rise 900ms ease both}
+    .card+.card{margin-top:18px;animation-delay:120ms}
+    .card img{width:100%}
+    .ornament{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--rose);padding:22px 8px 8px;animation:rise 900ms ease both}
+    .ornament span{font-family:"Cormorant Garamond","Noto Serif TC",serif;font-style:italic;letter-spacing:.28em;font-size:12px}
+    .ornament i{display:block;width:42px;height:1px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+    .countdown-wrap{text-align:center;padding:4px 10px 18px}
+    .countdown-label{font-family:"Cormorant Garamond",serif;font-style:italic;color:var(--rose-deep);letter-spacing:.18em;font-size:13px;margin-bottom:10px}
     .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-    .count-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;text-align:center;padding:10px 4px 8px}
-    .count-box b{display:block;font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:500;line-height:1.1}
-    .count-box span{font-size:11px;color:var(--ink-soft);letter-spacing:.12em}
-    .map-actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:4px 20px 20px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 10px;border-radius:999px;font-size:13px;letter-spacing:.06em;border:1px solid var(--ink);background:var(--ink);color:var(--white);font-family:inherit}
-    .btn.ghost{background:transparent;color:var(--ink)}
-    footer{text-align:center;padding:8px 24px 20px;color:var(--ink-soft);font-size:12px;letter-spacing:.12em}
-    .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom));width:min(520px,calc(100% - 24px));display:grid;grid-template-columns:1fr 1fr;gap:8px;z-index:20}
-    .dock .btn{box-shadow:0 10px 30px rgba(40,30,20,.18);min-height:46px}
-    @media(min-width:720px){body{padding:32px 0;background:#e8e0d4}.wrap{border-radius:20px;overflow:hidden}}
+    .count-box{background:rgba(255,252,248,.72);border:1px solid var(--line);border-radius:16px;padding:12px 4px 10px}
+    .count-box b{display:block;font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums;color:var(--rose-deep)}
+    .count-box span{display:block;margin-top:6px;font-size:10px;letter-spacing:.16em;color:var(--ink-soft)}
+    .actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 14px 16px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 10px;border-radius:999px;text-decoration:none;font-size:13px;letter-spacing:.04em;border:1px solid var(--rose);background:var(--rose);color:var(--white);font-family:inherit;transition:background-color 180ms ease,color 180ms ease,border-color 180ms ease,transform 180ms ease}
+    .btn.ghost{background:transparent;color:var(--rose-deep)}
+    .btn:hover{background:var(--rose-deep);color:var(--white)}
+    .btn:active{transform:translateY(1px)}
+    .btn:focus-visible{outline:2px solid var(--rose-deep);outline-offset:3px}
+    footer{text-align:center;padding:22px 12px 0;color:var(--ink-soft);font-family:"Noto Serif TC",serif;letter-spacing:.18em;font-size:13px;text-wrap:balance}
+    .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(402px,calc(100% - 24px));display:grid;grid-template-columns:1fr 1fr;gap:8px;z-index:20;padding:8px;background:rgba(255,252,248,.82);border:1px solid rgba(176,122,115,.22);border-radius:999px;backdrop-filter:blur(16px)}
+    .dock .btn{box-shadow:0 8px 20px rgba(90,54,46,.12)}
+    @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    @media(min-width:720px){body{padding:28px 0}.wrap{max-width:460px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.ornament{animation:none}.btn{transition:none}}
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="sheet">
-      <img src="./images/cover.jpg" alt="馬躍成與楊雅婷｜VVG Food Play & Bar｜2026.11.15 11:30" />
-    </section>
-    <section class="tools">
-      <div class="countdown" id="countdown"></div>
-    </section>
-    <section class="sheet">
-      <img src="./images/timeline.jpg" alt="11:30 迎賓、12:00 午宴、14:30 送客" />
-    </section>
-    <section class="sheet">
-      <img src="./images/map.jpg" alt="臺中國家歌劇院 5F VVG Food Play 地圖" />
-    </section>
-    <div class="map-actions">
-      <a class="btn ghost" href="tel:+886422587582">撥打電話</a>
-      <a class="btn ghost" href="https://maps.apple.com/?q=%E8%87%BA%E4%B8%AD%E5%9C%8B%E5%AE%B6%E6%AD%8C%E5%8A%87%E9%99%A2&ll=24.1629258,120.6404037" target="_blank" rel="noopener">Apple 地圖</a>
-      <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=24.1629258,120.6404037" target="_blank" rel="noopener">Google 導航</a>
-    </div>
+  <a class="skip" href="#invite">跳到喜帖內容</a>
+  <main class="wrap" id="invite">
+    <article class="card">
+      <img src="./images/cover.jpg" alt="馬躍成與楊雅婷婚紗照，VVG Food Play & Bar，2026年11月15日星期日上午11時30分" width="900" height="1269" fetchpriority="high" />
+      <div class="ornament" aria-hidden="true"><i></i><span>together</span><i></i></div>
+      <div class="countdown-wrap">
+        <p class="countdown-label">距離我們的日子</p>
+        <div class="countdown" id="countdown" aria-live="polite"></div>
+      </div>
+    </article>
+    <article class="card">
+      <img src="./images/timeline.jpg" alt="婚禮流程：十一時30分迎賓，十二時午宴，十四時30分送客" width="900" height="1269" loading="lazy" />
+    </article>
+    <article class="card">
+      <img src="./images/map.jpg" alt="臺中國家歌劇院五樓 VVG Food Play 位置與停車場地圖" width="900" height="1269" loading="lazy" />
+      <div class="actions">
+        <a class="btn ghost" href="tel:+886422587582">致電會場</a>
+        <a class="btn ghost" href="https://maps.apple.com/?q=%E8%87%BA%E4%B8%AD%E5%9C%8B%E5%AE%B6%E6%AD%8C%E5%8A%87%E9%99%A2&ll=24.1629258,120.6404037" target="_blank" rel="noopener">Apple 地圖</a>
+        <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=24.1629258,120.6404037" target="_blank" rel="noopener">Google 導航</a>
+      </div>
+    </article>
     <footer>期待與您相見</footer>
   </main>
-  <div class="dock">
+  <nav class="dock" aria-label="快捷操作">
     <a class="btn ghost" href="invite.ics">加入行事曆</a>
-    <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=24.1629258,120.6404037">導航前往</a>
-  </div>
+    <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=24.1629258,120.6404037">前往會場</a>
+  </nav>
   <script>
-    const wedding = new Date("2026-11-15T11:30:00+08:00");
-    const box = document.getElementById("countdown");
-    function tick() {
-      const diff = wedding - Date.now();
-      if (diff < 0) {
-        box.innerHTML = '<div class="count-box" style="grid-column:1/-1"><b>TODAY</b><span>TODAY</span></div>';
-        return;
-      }
-      const d = Math.floor(diff / 86400000);
-      const h = Math.floor(diff % 86400000 / 3600000);
-      const m = Math.floor(diff % 3600000 / 60000);
-      const s = Math.floor(diff % 60000 / 1000);
-      box.innerHTML = [[d,"DAYS"],[h,"HRS"],[m,"MIN"],[s,"SEC"]]
-        .map(([n,l]) => `<div class="count-box"><b>${n}</b><span>${l}</span></div>`).join("");
+    const wedding=new Date("2026-11-15T11:30:00+08:00");
+    const box=document.getElementById("countdown");
+    function tick(){
+      const diff=wedding.getTime()-Date.now();
+      if(diff<0){box.innerHTML='<div class="count-box" style="grid-column:1/-1"><b>TODAY</b><span>今天</span></div>';return;}
+      const parts=[Math.floor(diff/86400000),Math.floor(diff%86400000/3600000),Math.floor(diff%3600000/60000),Math.floor(diff%60000/1000)];
+      const labels=["天","時","分","秒"];
+      box.innerHTML=parts.map((n,i)=>`<div class="count-box"><b>${n}</b><span>${labels[i]}</span></div>`).join("");
     }
-    tick();
-    setInterval(tick, 1000);
+    tick();setInterval(tick,1000);
   </script>
 </body>
 </html>
