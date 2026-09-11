@@ -34,7 +34,10 @@
     .count-box{background:rgba(255,252,248,.72);border:1px solid var(--line);border-radius:16px;padding:12px 4px 10px}
     .count-box b{display:block;font-family:"Cormorant Garamond",serif;font-size:26px;font-weight:500;line-height:1;font-variant-numeric:tabular-nums;color:var(--rose-deep)}
     .count-box span{display:block;margin-top:6px;font-size:10px;letter-spacing:.16em;color:var(--ink-soft)}
-    .actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 14px 16px}
+    .transit{padding:18px 18px 4px}
+    .transit h2{font-family:"Cormorant Garamond","Noto Serif TC",serif;font-weight:500;font-size:13px;letter-spacing:.28em;text-align:center;color:var(--rose-deep);margin-bottom:10px}
+    .transit p{font-size:14px;color:var(--ink-soft);text-align:center;text-wrap:pretty}
+    .actions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:14px 14px 16px}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 10px;border-radius:999px;text-decoration:none;font-size:13px;letter-spacing:.04em;border:1px solid var(--rose);background:var(--rose);color:var(--white);font-family:inherit;transition:background-color 180ms ease,color 180ms ease,border-color 180ms ease,transform 180ms ease}
     .btn.ghost{background:transparent;color:var(--rose-deep)}
     .btn:hover{background:var(--rose-deep);color:var(--white)}
@@ -62,8 +65,12 @@
     <article class="card">
       <img src="./images/timeline.jpg" alt="婚禮流程：十一時30分迎賓，十二時午宴，十四時30分送客" width="900" height="1269" loading="lazy" />
     </article>
-    <article class="card">
+    <article class="card" id="transit">
       <img src="./images/map.jpg" alt="臺中國家歌劇院五樓 VVG Food Play 位置與停車場地圖" width="900" height="1269" loading="lazy" />
+      <section class="transit">
+        <h2>TRAFFIC</h2>
+        <p>歌劇院 B1 設有停車場，於婚禮送客時，VVG 的工作人員會在現場發放 3 小時免費停車折抵券，歡迎有需要的賓客自由領取嗎！</p>
+      </section>
       <div class="actions">
         <a class="btn ghost" href="tel:+886422587582">致電會場</a>
         <a class="btn ghost" href="https://maps.apple.com/?q=National%20Taichung%20Theater%2C%20No.%20101%2C%20Section%202%2C%20Huilai%20Rd%2C%20Xitun%20District%2C%20Taichung%20City%20407025" target="_blank" rel="noopener">Apple 地圖</a>
