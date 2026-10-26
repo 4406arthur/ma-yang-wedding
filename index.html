@@ -46,6 +46,28 @@
     footer{text-align:center;padding:22px 12px 0;color:var(--ink-soft);font-family:"Noto Serif TC",serif;letter-spacing:.18em;font-size:13px;text-wrap:balance}
     .dock{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));width:min(402px,calc(100% - 24px));display:grid;grid-template-columns:1fr 1fr;gap:8px;z-index:20;padding:8px;background:rgba(255,252,248,.82);border:1px solid rgba(176,122,115,.22);border-radius:999px;backdrop-filter:blur(16px)}
     .dock .btn{box-shadow:0 8px 20px rgba(90,54,46,.12)}
+    .seat{padding:22px 16px 18px}
+    .seat h2{font-family:"Cormorant Garamond","Noto Serif TC",serif;font-weight:500;font-size:13px;letter-spacing:.28em;text-align:center;color:var(--rose-deep);margin-bottom:6px}
+    .seat .hint{font-size:13px;color:var(--ink-soft);text-align:center;margin-bottom:12px}
+    .seat input{width:100%;min-height:46px;border-radius:999px;border:1px solid var(--line);background:var(--white);padding:0 18px;font:inherit;font-size:16px;color:var(--ink)}
+    .seat input:focus{outline:2px solid var(--rose);outline-offset:2px}
+    .cands{list-style:none;margin-top:8px;display:grid;gap:6px}
+    .cands button,.tbl button{width:100%;text-align:left;border:1px solid var(--line);background:rgba(255,252,248,.72);border-radius:14px;padding:9px 14px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer;display:flex;justify-content:space-between;gap:8px}
+    .cands small,.tbl small{color:var(--ink-soft);font-size:12px}
+    .result{margin-top:14px;border:1px solid rgba(176,122,115,.3);border-radius:18px;padding:14px;background:var(--white);text-align:center}
+    .result b{display:block;font-family:"Cormorant Garamond",serif;font-size:40px;font-weight:500;color:var(--rose-deep);line-height:1.1}
+    .result p{font-size:13px;color:var(--ink-soft)}
+    .mates{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:8px}
+    .mates span{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:2px 10px}
+    .plan{position:relative;margin-top:14px;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+    .plan .pin{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;border-radius:50%;border:3px solid #c0392b;box-shadow:0 0 0 4px rgba(192,57,43,.25);animation:pulse 1.4s ease-in-out infinite;pointer-events:none}
+    @keyframes pulse{50%{box-shadow:0 0 0 10px rgba(192,57,43,0)}}
+    .browse{margin-top:16px}
+    .browse details{border-top:1px solid var(--line);padding:8px 2px}
+    .browse summary{cursor:pointer;font-size:14px;color:var(--rose-deep);list-style-position:inside}
+    .tbl{margin:8px 0 4px;font-size:12px;color:var(--ink-soft)}
+    .tbl div{display:grid;gap:4px;margin-top:4px}
+    .dock{grid-template-columns:1fr 1fr 1fr}
     @keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
     @media(min-width:720px){body{padding:28px 0}.wrap{max-width:460px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.card,.ornament{animation:none}.btn{transition:none}}
@@ -76,9 +98,21 @@
         <a class="btn" href="./nearby.html">附近好玩</a>
       </div>
     </article>
+    <article class="card" id="seat">
+      <section class="seat">
+        <h2>FIND YOUR SEAT</h2>
+        <p class="hint">輸入名字的任一字、英文名或暱稱都可以，也能直接在下方分類中找</p>
+        <input id="seat-q" type="search" placeholder="例如：雅婷、Joann、韋智" autocomplete="off" aria-label="搜尋姓名" />
+        <ul class="cands" id="seat-cands" aria-live="polite"></ul>
+        <div id="seat-result" hidden></div>
+        <div class="plan"><img src="./images/seat-map.jpg" alt="VVG 桌次平面圖：A、B、C 三個用餐區與主桌 8 號" width="804" height="1132" loading="lazy" /><i class="pin" id="seat-pin" hidden></i></div>
+        <div class="browse" id="seat-browse"></div>
+      </section>
+    </article>
     <footer>期待與您相見</footer>
   </main>
   <nav class="dock" aria-label="快捷操作">
+    <a class="btn ghost" href="#seat">座位查詢</a>
     <a class="btn ghost" href="invite.ics">加入行事曆</a>
     <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=National%20Taichung%20Theater%2C%20No.%20101%E8%99%9F%2C%20Section%202%2C%20Huilai%20Rd%2C%20Huilai%20Village%2C%20Xitun%20District%2C%20Taichung%20City%2C%20407025">前往會場</a>
   </nav>
@@ -93,6 +127,26 @@
       box.innerHTML=parts.map((n,i)=>`<div class="count-box"><b>${n}</b><span>${labels[i]}</span></div>`).join("");
     }
     tick();setInterval(tick,1000);
+  </script>
+  <script src="./seat.js"></script>
+  <script>
+  (function(){
+    var q=document.getElementById('seat-q'),c=document.getElementById('seat-cands'),r=document.getElementById('seat-result'),pin=document.getElementById('seat-pin'),br=document.getElementById('seat-browse'),D;
+    function esc(s){return String(s).replace(/[&<>"]/g,function(x){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]})}
+    function label(g){return g.name+(g.seats>1?' 等 '+g.seats+' 位':'')}
+    function tname(t){return t==8?'主桌 8':t+' 桌'}
+    function pick(g){
+      var mates=D.guests.filter(function(x){return x.table==g.table&&x!==g});
+      r.hidden=false;r.innerHTML='<div class="result"><p>'+esc(label(g))+(g.aliases.length?'（'+esc(g.aliases.join('、'))+'）':'')+'</p><b>'+tname(g.table)+'</b><p>'+g.zone+' 用餐區・'+esc(g.cat||'')+'</p>'+(mates.length?'<div class="mates">'+mates.map(function(m){return '<span>'+esc(label(m))+'</span>'}).join('')+'</div>':'')+'</div>';
+      var xy=D.coords[g.table];if(xy){pin.hidden=false;pin.style.left=xy[0]+'%';pin.style.top=xy[1]+'%'}else pin.hidden=true;
+      c.innerHTML='';r.scrollIntoView({behavior:'smooth',block:'start'})}
+    function btn(g,sub){var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+esc(label(g))+'</span><small>'+esc(sub)+'</small>';b.onclick=function(){pick(g)};return b}
+    fetch('./seats.json').then(function(x){return x.json()}).then(function(d){D=d;
+      var cats={};d.guests.forEach(function(g){(cats[g.cat]=cats[g.cat]||{})[g.table]=((cats[g.cat]||{})[g.table]||[]).concat(g)});
+      Object.keys(cats).forEach(function(k){var det=document.createElement('details');det.innerHTML='<summary>'+esc(k)+'</summary>';
+        Object.keys(cats[k]).sort(function(a,b){return a-b}).forEach(function(t){var w=document.createElement('div');w.className='tbl';w.innerHTML=tname(t);var l=document.createElement('div');cats[k][t].forEach(function(g){l.appendChild(btn(g,g.aliases.join('、')))});w.appendChild(l);det.appendChild(w)});br.appendChild(det)});
+      q.addEventListener('input',function(){c.innerHTML='';SeatSearch.search(D.guests,q.value).forEach(function(g){var li=document.createElement('li');li.appendChild(btn(g,tname(g.table)+'・'+g.cat));c.appendChild(li)});if(q.value&&!c.children.length)c.innerHTML='<li class="hint" style="font-size:13px;color:var(--ink-soft);text-align:center">找不到，試試只打一個字或從下方分類找</li>'})});
+  })();
   </script>
 </body>
 </html>
