@@ -101,12 +101,11 @@
     <article class="card" id="seat">
       <section class="seat">
         <h2>FIND YOUR SEAT</h2>
-        <p class="hint">輸入名字的任一字、英文名或暱稱都可以，也能直接在下方分類中找</p>
+        <p class="hint">輸入名字的任一字、英文名或暱稱都可以</p>
         <input id="seat-q" type="search" placeholder="例如：雅婷、Joann、韋智" autocomplete="off" aria-label="搜尋姓名" />
         <ul class="cands" id="seat-cands" aria-live="polite"></ul>
         <div id="seat-result" hidden></div>
         <div class="plan"><img src="./images/seat-map.jpg" alt="VVG 桌次平面圖：A、B、C 三個用餐區與主桌 8 號" width="804" height="1132" loading="lazy" /><i class="pin" id="seat-pin" hidden></i></div>
-        <div class="browse" id="seat-browse"></div>
       </section>
     </article>
     <footer>期待與您相見</footer>
@@ -131,7 +130,7 @@
   <script src="./seat.js"></script>
   <script>
   (function(){
-    var q=document.getElementById('seat-q'),c=document.getElementById('seat-cands'),r=document.getElementById('seat-result'),pin=document.getElementById('seat-pin'),br=document.getElementById('seat-browse'),D;
+    var q=document.getElementById('seat-q'),c=document.getElementById('seat-cands'),r=document.getElementById('seat-result'),pin=document.getElementById('seat-pin'),D;
     function esc(s){return String(s).replace(/[&<>"]/g,function(x){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]})}
     function label(g){return g.name+(g.seats>1?' 等 '+g.seats+' 位':'')}
     function tname(t){return t==8?'主桌 8':t+' 桌'}
@@ -142,10 +141,7 @@
       c.innerHTML='';r.scrollIntoView({behavior:'smooth',block:'start'})}
     function btn(g,sub){var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+esc(label(g))+'</span><small>'+esc(sub)+'</small>';b.onclick=function(){pick(g)};return b}
     fetch('./seats.json').then(function(x){return x.json()}).then(function(d){D=d;
-      var cats={};d.guests.forEach(function(g){(cats[g.cat]=cats[g.cat]||{})[g.table]=((cats[g.cat]||{})[g.table]||[]).concat(g)});
-      Object.keys(cats).forEach(function(k){var det=document.createElement('details');det.innerHTML='<summary>'+esc(k)+'</summary>';
-        Object.keys(cats[k]).sort(function(a,b){return a-b}).forEach(function(t){var w=document.createElement('div');w.className='tbl';w.innerHTML=tname(t);var l=document.createElement('div');cats[k][t].forEach(function(g){l.appendChild(btn(g,g.aliases.join('、')))});w.appendChild(l);det.appendChild(w)});br.appendChild(det)});
-      q.addEventListener('input',function(){c.innerHTML='';SeatSearch.search(D.guests,q.value).forEach(function(g){var li=document.createElement('li');li.appendChild(btn(g,tname(g.table)+'・'+g.cat));c.appendChild(li)});if(q.value&&!c.children.length)c.innerHTML='<li class="hint" style="font-size:13px;color:var(--ink-soft);text-align:center">找不到，試試只打一個字或從下方分類找</li>'})});
+      q.addEventListener('input',function(){c.innerHTML='';SeatSearch.search(D.guests,q.value).forEach(function(g){var li=document.createElement('li');li.appendChild(btn(g,tname(g.table)+'・'+g.cat));c.appendChild(li)});if(q.value&&!c.children.length)c.innerHTML='<li class="hint" style="font-size:13px;color:var(--ink-soft);text-align:center">找不到，試試只打一個字或英文名</li>'})});
   })();
   </script>
 </body>
