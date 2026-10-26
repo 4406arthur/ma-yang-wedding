@@ -137,7 +137,7 @@
     function tname(t){return t==8?'主桌 8':t+' 桌'}
     function pick(g){
       var mates=D.guests.filter(function(x){return x.table==g.table&&x!==g});
-      r.hidden=false;r.innerHTML='<div class="result"><p>'+esc(label(g))+(g.aliases.length?'（'+esc(g.aliases.join('、'))+'）':'')+'</p><b>'+tname(g.table)+'</b><p>'+g.zone+' 用餐區・'+esc(g.cat||'')+'</p>'+(mates.length?'<div class="mates">'+mates.map(function(m){return '<span>'+esc(label(m))+'</span>'}).join('')+'</div>':'')+'</div>';
+      r.hidden=false;r.innerHTML='<div class="result"><p>'+esc(label(g))+'</p><b>'+tname(g.table)+'</b><p>'+g.zone+' 用餐區・'+esc(g.cat||'')+'</p>'+(mates.length?'<div class="mates">'+mates.map(function(m){return '<span>'+esc(label(m))+'</span>'}).join('')+'</div>':'')+'</div>';
       document.querySelectorAll('.tb.on').forEach(function(e){e.classList.remove('on')});var el=document.getElementById('tb-'+g.table);if(el)el.classList.add('on');
       c.innerHTML='';r.scrollIntoView({behavior:'smooth',block:'start'})}
     function btn(g,sub){var b=document.createElement('button');b.type='button';b.innerHTML='<span>'+esc(label(g))+'</span><small>'+esc(sub)+'</small>';b.onclick=function(){pick(g)};return b}
